@@ -21,5 +21,6 @@ The Finite Element Method (FEM) is an essential tool in analyzing fatigue behavi
 
 To tackle this challenge, our project utilizes the UMAT subroutine in Abaqus, written in Fortran, to examine fatigue in composites within a three-dimensional framework. We offer a comprehensive training package for this project, which includes detailed video tutorials and downloadable modeling files. You can access this package on our website.
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/76d8b758-57cd-4aab-8fab-f2ecb02c6d27)
+
 
