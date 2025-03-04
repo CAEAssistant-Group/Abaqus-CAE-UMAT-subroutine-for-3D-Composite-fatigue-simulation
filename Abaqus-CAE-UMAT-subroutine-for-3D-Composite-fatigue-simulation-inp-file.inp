@@ -1,0 +1,206 @@
+** 10 steps
+*Heading
+** Job name: Job-umat3d Model name: 10 steps-Copy
+*Preprint, echo=NO, model=NO, history=NO, contact=NO
+**
+** PARTS
+**
+*Part, name=Part-1
+*End Part
+**  
+**
+** ASSEMBLY
+**
+*Assembly, name=Assembly
+**  
+*Instance, name=Part-1-1, part=Part-1
+*Node
+      1,           5.,           5.,           5.
+      2,           5.,           0.,           5.
+      3,           5.,           5.,           0.
+      4,           5.,           0.,           0.
+      5,           0.,           5.,           5.
+      6,           0.,           0.,           5.
+      7,           0.,           5.,           0.
+      8,           0.,           0.,           0.
+*Element, type=C3D8
+1, 5, 6, 8, 7, 1, 2, 4, 3
+*Nset, nset=Set-1, generate
+ 1,  8,  1
+*Elset, elset=Set-1
+ 1,
+*Nset, nset=Set-2, generate
+ 1,  8,  1
+*Elset, elset=Set-2
+ 1,
+*Nset, nset=Set-3, generate
+ 1,  8,  1
+*Elset, elset=Set-3
+ 1,
+*Nset, nset=Set-4, generate
+ 1,  8,  1
+*Elset, elset=Set-4
+ 1,
+*Nset, nset=Set-5, generate
+ 1,  8,  1
+*Elset, elset=Set-5
+ 1,
+*Orientation, name=Ori-1
+          1.,           0.,           0.,           0.,           1.,           0.
+3, 0.
+** Section: Section-1
+*Solid Section, elset=Set-4, orientation=Ori-1, material=USERmaterial
+,
+*End Instance
+**  
+*Nset, nset=Set-1, instance=Part-1-1, generate
+ 1,  4,  1
+*Elset, elset=Set-1, instance=Part-1-1
+ 1,
+*Nset, nset=Set-2, instance=Part-1-1, generate
+ 1,  7,  2
+*Elset, elset=Set-2, instance=Part-1-1
+ 1,
+*Nset, nset=Set-3, instance=Part-1-1
+ 1, 2, 5, 6
+*Elset, elset=Set-3, instance=Part-1-1
+ 1,
+*Nset, nset=Set-4, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-4, instance=Part-1-1
+ 1,
+*Nset, nset=Set-5, instance=Part-1-1, generate
+ 1,  4,  1
+*Elset, elset=Set-5, instance=Part-1-1
+ 1,
+*Nset, nset=Set-6, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-6, instance=Part-1-1
+ 1,
+*Nset, nset=Set-7, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-7, instance=Part-1-1
+ 1,
+*Nset, nset=Set-8, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-8, instance=Part-1-1
+ 1,
+*Nset, nset=Set-9, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-9, instance=Part-1-1
+ 1,
+*Nset, nset=Set-10, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-10, instance=Part-1-1
+ 1,
+*Nset, nset=Set-11, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-11, instance=Part-1-1
+ 1,
+*Nset, nset=Set-12, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-12, instance=Part-1-1
+ 1,
+*Nset, nset=Set-13, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-13, instance=Part-1-1
+ 1,
+*Nset, nset=Set-14, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-14, instance=Part-1-1
+ 1,
+*Nset, nset=Set-15, instance=Part-1-1, generate
+ 5,  8,  1
+*Elset, elset=Set-15, instance=Part-1-1
+ 1,
+*End Assembly
+*Amplitude, name=Amp-1
+             0.,              0.,         2.5e-06,              1.,           5e-06,              0.
+*Amplitude, name=Amp-2
+             0.,              0.,              2.,              1.,             10.,              1.
+*Amplitude, name=Amp-3
+             0.,              1.,           1000.,              1.
+*Amplitude, name=Amp-4, time=TOTAL TIME
+             0.,              0.,             10.,              1.,             20.,              1.
+** 
+** MATERIALS
+** 
+*Material, name=ABAQUSmaterial
+*Density
+ 1e-09,
+*Elastic, type=ENGINEERING CONSTANTS
+29000.,10700.,10700.,   0.3,   0.3,   0.1, 3000., 3000.
+ 4864.,
+*Material, name=USERmaterial
+*Density
+ 1e-09,
+*Depvar
+     80,
+*User Material, constants=1
+0.,
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: BC-5 Type: Displacement/Rotation
+*Boundary
+Set-5, 1, 1
+Set-5, 2, 2
+Set-5, 3, 3
+** ----------------------------------------------------------------
+** 
+** STEP: Step-1
+** 
+*Step, name=Step-1, nlgeom=NO
+*Static, direct
+0.01, 1., 
+** 
+** BOUNDARY CONDITIONS
+** 
+** Name: BC-6 Type: Displacement/Rotation
+*Boundary
+Set-6, 1, 1, -0.025
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, number interval=1, time marks=NO
+** 
+** FIELD OUTPUT: F-Output-1
+** 
+*Output, field
+*Node Output
+RF, U, V
+*Element Output, directions=YES
+LE, S, SDV
+*Contact Output
+CSTRESS, 
+** 
+** HISTORY OUTPUT: H-Output-1
+** 
+*Output, history, variable=PRESELECT, number interval=200, time marks=NO
+*End Step
+** ----------------------------------------------------------------
+** 
+** STEP: Step-2
+** 
+*Step, name=Step-2, nlgeom=NO, inc=10000
+*Static, direct
+0.001, 1., 
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=0
+** 
+** FIELD OUTPUT: F-Output-1
+** 
+*Output, field
+*Node Output
+RF, U, V
+*Element Output, directions=YES
+LE, S, SDV
+*Contact Output
+CSTRESS, 
+** 
+** HISTORY OUTPUT: H-Output-1
+** 
+*Output, history, variable=PRESELECT, number interval=200, time marks=NO
+*End Step
