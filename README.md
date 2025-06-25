@@ -29,4 +29,4 @@ To tackle this challenge, our project utilizes the UMAT subroutine in Abaqus, wr
   <img width="750" src="Figures/3.png">
 </p>
 
-
+**ℹ️ This is just a demo to show how the code is structured. For the full, working version, please visit our website.**
